@@ -29,7 +29,7 @@ module DateStrptimeYearBoundaryScenarios
   def test_date_strptime_year_boundary_with_cweek
     # TODO: year-ambiguous cweek is not handled correctly during year boundaries:
     #  assert_equal Date.strptime('52', '%V'), Date.new(1992, 12, 21)
-    #  assert_equal Date.strptime('52', '%V'), Date.new(1991, 12, 30)
+    #  assert_equal Date.strptime('53', '%V'), Date.new(1991, 12, 28)
     assert_equal Date.strptime('52', '%V'), Date.new(1992, 12, 28)
     assert_equal Date.strptime('1', '%V'), Date.new(1992, 01, 6)
   end

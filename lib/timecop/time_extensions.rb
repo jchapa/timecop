@@ -47,7 +47,7 @@ class Date #:nodoc:
     def strptime_with_mock_date(str = '-4712-01-01', fmt = '%F', start = Date::ITALY)
       #If date is not valid the following line raises
       Date.strptime_without_mock_date(str, fmt, start)
-      
+
       d = Date._strptime(str, fmt)
       now = Time.now.to_date
 
