@@ -64,6 +64,7 @@ class Date #:nodoc:
       elsif d[:yday]
         Date.new(year, 1, 1, start).next_day(d[:yday] - 1)
       elsif d[:cwyear] || d[:cweek] || d[:wnum0] || d[:wnum1] || d[:wday] || d[:cwday]
+        # When only a day (wday/cwday) is present, derive the week from the resolved date; otherwise fall back to now's week
         week = d[:cweek] || d[:wnum1] || d[:wnum0] || (cwday || wday || now).strftime('%W').to_i
         if d[:wnum0] #Week of year where week starts on sunday
           if d[:cwday] #monday based day of week

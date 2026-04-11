@@ -26,7 +26,8 @@ module DateStrptimeYearBoundaryScenarios
   end
 
   # Test for cweek
-  # Note: year-ambiguous cweek (%V) near year boundaries is a known limitation
+  # Note: ISO week (%V) near year boundaries is a known limitation — the values below reflect
+  # current behavior, not the correct ISO dates (which would use %G-%V for the year component)
   def test_date_strptime_year_boundary_with_cweek
     assert_equal Date.strptime('52', '%V'), Date.new(1992, 12, 28)
     assert_equal Date.strptime('1', '%V'), Date.new(1992, 01, 6)
