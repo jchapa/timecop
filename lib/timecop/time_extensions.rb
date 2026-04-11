@@ -52,8 +52,8 @@ class Date #:nodoc:
       now = Time.now.to_date
 
       # If "current" time falls near a year boundary, with a year-ambiguous str, we need to explicitly handle it
-      cwday = d[:cwday] && (now.to_date + (d[:cwday] - now.to_date.wday))
-      wday = d[:wday] && (now.to_date + (d[:wday] - now.to_date.wday))
+      cwday = d[:cwday] && (now + (d[:cwday] - now.wday))
+      wday = d[:wday] && (now + (d[:wday] - now.wday))
 
       year = d[:year] || d[:cwyear] || (cwday || wday || now).year
       mon = d[:mon] || now.mon

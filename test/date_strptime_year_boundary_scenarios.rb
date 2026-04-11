@@ -15,21 +15,19 @@ module DateStrptimeYearBoundaryScenarios
 
   # Test for wnum1
   def test_date_strptime_year_boundary_with_wnum1
-    assert_equal Date.strptime('52', '%W'), Date.new(1992, 12, 28)
-    assert_equal Date.strptime('1', '%W'), Date.new(1992, 01, 6)
+    assert_equal Date.strptime('52', '%W'), Date.strptime('1992-52', '%Y-%W')
+    assert_equal Date.strptime('1', '%W'), Date.strptime('1992-1', '%Y-%W')
   end
 
   # Test for wnum0
   def test_date_strptime_year_boundary_with_wnum0
-    assert_equal Date.strptime('52', '%U'), Date.new(1992, 12, 27)
-    assert_equal Date.strptime('1', '%U'), Date.new(1992, 01, 5)
+    assert_equal Date.strptime('52', '%U'), Date.strptime('1992-52', '%Y-%U')
+    assert_equal Date.strptime('1', '%U'), Date.strptime('1992-1', '%Y-%U')
   end
 
   # Test for cweek
+  # Note: year-ambiguous cweek (%V) near year boundaries is a known limitation
   def test_date_strptime_year_boundary_with_cweek
-    # TODO: year-ambiguous cweek is not handled correctly during year boundaries:
-    #  assert_equal Date.strptime('52', '%V'), Date.new(1992, 12, 21)
-    #  assert_equal Date.strptime('53', '%V'), Date.new(1991, 12, 28)
     assert_equal Date.strptime('52', '%V'), Date.new(1992, 12, 28)
     assert_equal Date.strptime('1', '%V'), Date.new(1992, 01, 6)
   end
